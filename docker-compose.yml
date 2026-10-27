@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jobjam-db
+    environment:
+      POSTGRES_DB: jobjam
+      POSTGRES_USER: jobjam
+      POSTGRES_PASSWORD: jobjam
+    ports:
+      - "5440:5432"
+    volumes:
+      - jobjam-data:/var/lib/postgresql/data
+
+volumes:
+  jobjam-data:
