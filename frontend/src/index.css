@@ -125,3 +125,85 @@ button.danger:hover { background: var(--danger); color: #fff; }
 .empty p { color: var(--muted); margin-top: 0; }
 .muted { color: var(--muted); font-size: 0.9rem; }
 .error { color: var(--danger); }
+
+.extract-box {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+.extract-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.extract-box p { margin: 0; }
+.source-tabs {
+  display: inline-flex;
+  justify-self: start;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.source-tabs button {
+  background: transparent;
+  color: var(--text);
+  border: none;
+  border-radius: 0;
+  font-weight: 500;
+  padding: 7px 14px;
+}
+.source-tabs button + button { border-left: 1px solid var(--border); }
+.source-tabs button:hover { background: var(--border); }
+.source-tabs button.active { background: var(--accent); color: #fff; }
+
+.screenshots { display: grid; gap: 12px; }
+.dropzone {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.dropzone:hover, .dropzone:focus, .dropzone.dragging { border-color: var(--accent); outline: none; }
+.thumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 10px;
+}
+.thumbs li { position: relative; }
+.thumbs img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: block;
+}
+.thumbs .remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  line-height: 1;
+  background: rgba(0, 0, 0, 0.65);
+}
+.thumbs .remove:hover { background: var(--danger); }
+
+.job-url { margin: -12px 0 20px; overflow-wrap: anywhere; }
+.job-url a { color: var(--accent); }
+.job-url a:hover { text-decoration: underline; }
+
+.markdown :is(h1, h2, h3, h4) { font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--text); margin: 18px 0 6px; }
+.markdown > h2:first-child { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-top: 0; }
+.markdown p, .markdown ul, .markdown ol { margin: 0 0 10px; }
+.markdown ul, .markdown ol { padding-left: 22px; }
+.markdown a { color: var(--accent); }

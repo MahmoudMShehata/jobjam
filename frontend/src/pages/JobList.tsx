@@ -2,6 +2,14 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api, type Job } from '../api'
 
+function hostname(url: string) {
+  try {
+    return new URL(url).hostname
+  } catch {
+    return url
+  }
+}
+
 export default function JobList() {
   const [jobs, setJobs] = useState<Job[] | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -35,6 +43,7 @@ export default function JobList() {
               {job.description && <p className="snippet">{job.description}</p>}
               <span className="muted">
                 Added {new Date(job.createdAt).toLocaleDateString()}
+                {job.url && ` · ${hostname(job.url)}`}
               </span>
             </Link>
           </li>

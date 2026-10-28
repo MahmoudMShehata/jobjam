@@ -1,0 +1,3 @@
+ALTER TABLE jobs
+    ADD COLUMN url     VARCHAR(2048),
+    ADD COLUMN details TEXT;

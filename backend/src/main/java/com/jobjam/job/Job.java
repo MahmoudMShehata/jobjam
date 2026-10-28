@@ -28,17 +28,26 @@ public class Job {
     @Column(columnDefinition = "TEXT")
     private String benefits;
 
+    @Column(length = 2048)
+    private String url;
+
+    @Column(columnDefinition = "TEXT")
+    private String details;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
     protected Job() {
     }
 
-    public Job(String title, String description, String requirements, String benefits) {
+    public Job(String title, String description, String requirements, String benefits,
+            String url, String details) {
         this.title = title;
         this.description = description;
         this.requirements = requirements;
         this.benefits = benefits;
+        this.url = url;
+        this.details = details;
         this.createdAt = Instant.now();
     }
 
@@ -60,6 +69,14 @@ public class Job {
 
     public String getBenefits() {
         return benefits;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getDetails() {
+        return details;
     }
 
     public Instant getCreatedAt() {

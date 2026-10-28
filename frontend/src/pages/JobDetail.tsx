@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Markdown from 'react-markdown'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api, type Job } from '../api'
 
@@ -38,6 +39,17 @@ export default function JobDetail() {
         <h1>{job.title}</h1>
         <button className="danger" onClick={handleDelete}>Delete</button>
       </div>
+      {job.url && (
+        <p className="job-url">
+          <a href={job.url} target="_blank" rel="noopener noreferrer">{job.url}</a>
+        </p>
+      )}
+      {job.details && (
+        <section className="detail-section markdown">
+          <h2>Details</h2>
+          <Markdown>{job.details}</Markdown>
+        </section>
+      )}
       {sections.map(([heading, text]) => (
         <section key={heading} className="detail-section">
           <h2>{heading}</h2>
