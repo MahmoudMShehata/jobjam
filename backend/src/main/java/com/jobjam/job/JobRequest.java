@@ -9,7 +9,7 @@ public record JobRequest(
         String description,
         String requirements,
         String benefits,
-        @Size(max = 2048) @Pattern(regexp = "^https?://.+", message = "must be an http(s) URL") String url,
+        @Size(max = 2048) @Pattern(regexp = "^\\s*(https?://.+)?$", message = "must be an http(s) URL") String url,
         String details) {
 
     Job toEntity() {

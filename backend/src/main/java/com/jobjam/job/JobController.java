@@ -1,11 +1,10 @@
 package com.jobjam.job;
 
-import com.anthropic.models.messages.Base64ImageSource;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,11 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class JobController {
 
     private static final int MAX_SCREENSHOTS = 8;
-    private static final Map<String, Base64ImageSource.MediaType> SCREENSHOT_TYPES = Map.of(
-            "image/png", Base64ImageSource.MediaType.IMAGE_PNG,
-            "image/jpeg", Base64ImageSource.MediaType.IMAGE_JPEG,
-            "image/webp", Base64ImageSource.MediaType.IMAGE_WEBP,
-            "image/gif", Base64ImageSource.MediaType.IMAGE_GIF);
+    private static final Set<String> SCREENSHOT_TYPES = Set.of("image/png", "image/jpeg", "image/webp", "image/gif");
 
     private final JobRepository jobs;
     private final JobExtractor extractor;
@@ -74,8 +69,8 @@ public class JobController {
         }
         List<JobExtractor.Screenshot> screenshots = new ArrayList<>();
         for (MultipartFile file : files) {
-            Base64ImageSource.MediaType mediaType = SCREENSHOT_TYPES.get(file.getContentType());
-            if (mediaType == null) {
+            String mediaType = file.getContentType();
+            if (!SCREENSHOT_TYPES.contains(mediaType)) {
                 throw new ResponseStatusException(HttpStatus.UNSUPPORTED_MEDIA_TYPE,
                         file.getOriginalFilename() + " is not a PNG, JPEG, WebP or GIF image");
             }

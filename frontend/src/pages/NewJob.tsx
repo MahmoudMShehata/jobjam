@@ -47,6 +47,9 @@ export default function NewJob() {
       setJob((current) => ({
         ...current,
         title: current.title?.trim() ? current.title : draft.title,
+        description: draft.description,
+        requirements: draft.requirements,
+        benefits: draft.benefits,
         details: draft.details,
       }))
     } catch (err) {
@@ -121,7 +124,7 @@ export default function NewJob() {
               {extracting ? 'Extracting…' : 'Extract with AI'}
             </button>
           </div>
-          {extracting && <p className="muted">Claude is reading the posting, this can take a little while…</p>}
+          {extracting && <p className="muted">The AI is reading the posting, this can take a minute or two…</p>}
           {extractError && (
             <p className="error">
               {extractError}

@@ -56,6 +56,11 @@
 			<artifactId>anthropic-java</artifactId>
 			<version>3.3.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.21.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>

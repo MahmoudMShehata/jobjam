@@ -11,10 +11,7 @@ export interface Job {
 
 export type JobInput = Pick<Job, 'title' | 'description' | 'requirements' | 'benefits' | 'url' | 'details'>
 
-export interface JobDraft {
-  title: string
-  details: string
-}
+export type JobDraft = Pick<Job, 'title' | 'description' | 'requirements' | 'benefits' | 'details'>
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   // FormData bodies need the browser to set their own multipart Content-Type.
